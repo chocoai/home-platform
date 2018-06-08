@@ -3,20 +3,15 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>home-modules</artifactId>
+        <artifactId>home-customer</artifactId>
         <groupId>com.home</groupId>
         <version>${home.version}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>home-customer</artifactId>
+    <artifactId>home-customer-common</artifactId>
     <version>${home.version}</version>
-    <modules>
-        <module>home-customer-client</module>
-        <module>home-customer-server</module>
-        <module>home-customer-common</module>
-    </modules>
-    <packaging>pom</packaging>
-    <description>home客户相关</description>
+    <packaging>jar</packaging>
+    <description>home系统客户系统Common</description>
 
 
 </project>
