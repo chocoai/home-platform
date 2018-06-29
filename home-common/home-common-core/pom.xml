@@ -13,4 +13,10 @@
     <packaging>jar</packaging>
     <description>home通用核心</description>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
 </project>

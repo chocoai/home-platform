@@ -13,5 +13,25 @@
     <packaging>jar</packaging>
     <description>home系统客户系统Rest</description>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.home</groupId>
+            <artifactId>home-customer-common</artifactId>
+            <version>${home.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.home</groupId>
+            <artifactId>home-common-core</artifactId>
+            <version>${home.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

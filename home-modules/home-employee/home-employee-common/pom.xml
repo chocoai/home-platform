@@ -3,15 +3,15 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>home-customer</artifactId>
+        <artifactId>home-employee</artifactId>
         <groupId>com.home</groupId>
         <version>${home.version}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>home-customer-common</artifactId>
+    <artifactId>home-employee-common</artifactId>
     <version>${home.version}</version>
     <packaging>jar</packaging>
-    <description>home系统客户系统Common</description>
+    <description>home系统员工系统Common</description>
 
     <dependencies>
         <dependency>
@@ -23,4 +23,5 @@
             <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
+
 </project>
