@@ -24,12 +24,21 @@
             <version>${home.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.home</groupId>
+            <artifactId>home-developer-client</artifactId>
+            <version>${home.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -62,5 +71,15 @@
         </dependency>
         <!-- swagger     end -->
     </dependencies>
+
+    <build>
+        <finalName>home-employee</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

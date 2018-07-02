@@ -19,6 +19,10 @@ import org.springframework.web.bind.annotation.PathVariable;
         fallback = CustomerClient.CustomerClientFallback.class
 )
 public interface CustomerClient {
+    /**
+     * Customer 服务访问前缀
+     */
+    String CUSTOMER_SERVER_PREFIX = "/customer";
 
     /**
      * 根据客户Id获取客户详情
@@ -26,7 +30,7 @@ public interface CustomerClient {
      * @param customerId 客户Id
      * @return CustomerVo
      */
-    @GetMapping("/{customerId}")
+    @GetMapping(CUSTOMER_SERVER_PREFIX + "/{customerId}")
     ResultVo<CustomerVo> getCustomer(@PathVariable(name = "customerId") Long customerId);
 
     @Component

@@ -10,7 +10,7 @@ import java.util.Date;
  *
  * @author Roger
  * @email 190642964@qq.com
- * @create 2018-6-29 16:05:46
+ * @create 2018-7-2 18:07:28
  */
 @Data
 @Entity
@@ -53,6 +53,11 @@ public class Employee {
      * 婚姻状况 0-未婚,1-已婚
      */
 	private Boolean maritalStatus;
+
+    /**
+     * 实名认证状态 0-未认证,1-已认证
+     */
+	private Boolean certificationStatus;
 
     /**
      * 创建时间

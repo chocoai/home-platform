@@ -7,7 +7,7 @@ import com.home.employee.server.domain.EmployeeBuildingPosition;
  *
  * @author Roger
  * @email 190642964@qq.com
- * @create 2018-6-29 16:05:46
+ * @create 2018-7-2 18:07:28
  */
 public interface EmployeeBuildingPositionService{
 

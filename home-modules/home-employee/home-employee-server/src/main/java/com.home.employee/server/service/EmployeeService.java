@@ -8,7 +8,7 @@ import com.home.employee.server.domain.Employee;
  *
  * @author Roger
  * @email 190642964@qq.com
- * @create 2018-6-29 16:05:46
+ * @create 2018-7-2 18:07:28
  */
 public interface EmployeeService{
 
@@ -17,5 +17,4 @@ public interface EmployeeService{
      * @param param EmployeeDto
      */
     void save(EmployeeDto param);
-
 }

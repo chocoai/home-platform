@@ -10,6 +10,11 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>home-developer</artifactId>
     <version>${home.version}</version>
+    <modules>
+        <module>home-developer-server</module>
+        <module>home-developer-common</module>
+        <module>home-developer-client</module>
+    </modules>
     <packaging>pom</packaging>
     <description>home开发商系统</description>
 
