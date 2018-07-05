@@ -45,6 +45,12 @@ public class DeveloperRest {
         return developerService.findDeveloperByPrimaryKey(primaryKey);
     }
 
+    @GetMapping
+    @ApiOperation(value = "获取开发商详情")
+    public ResultVo<DeveloperDto> getDeveloper(@RequestParam(name = "primaryKey") Long primaryKey) {
+        return developerService.findDeveloperByPrimaryKey(primaryKey);
+    }
+
     @PostMapping("/operation/area")
     @ApiOperation(value = "添加、修改运营区域", notes = "根据主键Id来判断为修改、添加")
     public ResultVo operationArea(@RequestBody DeveloperOperationAreaDto param) {
