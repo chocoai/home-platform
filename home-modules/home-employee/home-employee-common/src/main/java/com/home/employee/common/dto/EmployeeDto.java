@@ -18,7 +18,7 @@ public class EmployeeDto {
     /**
      * 姓名
      */
-    private String staffName;
+    private String employeeName;
     /**
      * 电话
      */
@@ -40,5 +40,28 @@ public class EmployeeDto {
      */
     private Boolean maritalStatus;
 
+    /**
+     * 员工身份证信息
+     */
+    private EmployeeCardDto employeeCard;
 
+    /**
+     * 开发商Id
+     */
+    private Long developerId;
+
+    /**
+     * 开发商运营区域Id
+     */
+    private Long operationAreaId;
+
+    /**
+     * 楼盘Id
+     */
+    private Long buildingId;
+
+    /**
+     * 分销商Id
+     */
+    private Long distributionId;
 }

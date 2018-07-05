@@ -7,6 +7,8 @@ import com.home.developer.common.dto.DeveloperDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * 开发商客户端
@@ -32,8 +34,8 @@ public interface DeveloperClient {
      * @param primaryKey 主键Id
      * @return ResultVo<DeveloperDto>
      */
-    @GetMapping(DEVELOPER_SERVER_PREFIX + "/{primaryKey}")
-    ResultVo<DeveloperDto> findDeveloper(@PathVariable Long primaryKey);
+    @RequestMapping(value = DEVELOPER_SERVER_PREFIX + "/{primaryKey}", method = RequestMethod.GET)
+    ResultVo<DeveloperDto> findDeveloper(@PathVariable(name = "primaryKey") Long primaryKey);
 
     /**
      * 获取楼盘详情
@@ -41,8 +43,8 @@ public interface DeveloperClient {
      * @param primaryKey 主键Id
      * @return ResultVo<BuildingDto>
      */
-    @GetMapping(DEVELOPER_SERVER_PREFIX + "/building/{primaryKey}")
-    ResultVo<BuildingDto> building(@PathVariable Long primaryKey);
+    @RequestMapping(value = DEVELOPER_SERVER_PREFIX + "/building/{primaryKey}", method = RequestMethod.GET)
+    ResultVo<BuildingDto> findBuilding(@PathVariable(name = "primaryKey") Long primaryKey);
 
     /**
      * 获取楼盘岗位详情
@@ -50,8 +52,8 @@ public interface DeveloperClient {
      * @param primaryKey 主键Id
      * @return ResultVo<BuildingPositionDto>
      */
-    @GetMapping(DEVELOPER_SERVER_PREFIX + "/building/position/{primaryKey}")
-    ResultVo<BuildingPositionDto> buildingPosition(@PathVariable Long primaryKey);
+    @RequestMapping(value = DEVELOPER_SERVER_PREFIX + "/building/position/{primaryKey}", method = RequestMethod.GET)
+    ResultVo<BuildingPositionDto> findBuildingPosition(@PathVariable(name = "primaryKey") Long primaryKey);
 
     class DeveloperClientFallback implements DeveloperClient {
         @Override
@@ -60,12 +62,12 @@ public interface DeveloperClient {
         }
 
         @Override
-        public ResultVo<BuildingDto> building(Long primaryKey) {
+        public ResultVo<BuildingDto> findBuilding(Long primaryKey) {
             return ResultVo.hystrix();
         }
 
         @Override
-        public ResultVo<BuildingPositionDto> buildingPosition(Long primaryKey) {
+        public ResultVo<BuildingPositionDto> findBuildingPosition(Long primaryKey) {
             return ResultVo.hystrix();
         }
     }

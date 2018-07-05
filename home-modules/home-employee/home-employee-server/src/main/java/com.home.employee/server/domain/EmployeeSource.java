@@ -39,6 +39,11 @@ public class EmployeeSource {
      */
 	private Long buildingId;
 
+	/**
+	 * 分销商Id
+	 */
+	private Long distributionId;
+
     /**
      * 员工Id
      */

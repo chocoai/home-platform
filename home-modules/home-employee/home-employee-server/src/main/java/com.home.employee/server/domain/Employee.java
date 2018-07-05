@@ -27,7 +27,7 @@ public class Employee {
     /**
      * 姓名
      */
-	private String staffName;
+	private String employeeName;
 
     /**
      * 电话

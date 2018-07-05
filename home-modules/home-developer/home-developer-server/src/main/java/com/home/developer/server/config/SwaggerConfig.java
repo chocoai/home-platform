@@ -34,7 +34,7 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("home -> customer 接口文档")
+                .title("home -> developer 接口文档")
                 .description("home客户相关接口")
                 .version("1.0")
                 .build();

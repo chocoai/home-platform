@@ -75,7 +75,7 @@ public class DeveloperRest {
 
     @GetMapping("/building/{primaryKey}")
     @ApiOperation(value = "获取楼盘详情")
-    public ResultVo<BuildingDto> building(@PathVariable Long primaryKey) {
+    public ResultVo<BuildingDto> findBuilding(@PathVariable Long primaryKey) {
         return buildingService.findBuildingByPrimaryKey(primaryKey);
     }
 
@@ -88,7 +88,7 @@ public class DeveloperRest {
 
     @GetMapping("/building/position/{primaryKey}")
     @ApiOperation(value = "获取楼盘岗位详情")
-    public ResultVo<BuildingPositionDto> buildingPosition(@PathVariable Long primaryKey) {
+    public ResultVo<BuildingPositionDto> findBuildingPosition(@PathVariable Long primaryKey) {
         return buildingPositionService.findBuildingPositionByPrimaryKey(primaryKey);
     }
 }

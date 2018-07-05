@@ -17,7 +17,7 @@ public interface EmployeeRepository extends JpaRepository<Employee,Long> {
 
     /**
      * 修改 Employee
-     * @param staffName
+     * @param employeeName
      * @param mobile
      * @param email
      * @param headImage
@@ -26,9 +26,9 @@ public interface EmployeeRepository extends JpaRepository<Employee,Long> {
      * @param id
      * @return
      */
-    @Query("UPDATE Employee SET staffName = :staffName, mobile = :mobile, email = :email, headImage =:headImage, employeePassword = :employeePassword, maritalStatus = :maritalStatus WHERE id =:id")
+    @Query("UPDATE Employee SET employeeName = :employeeName, mobile = :mobile, email = :email, headImage =:headImage, employeePassword = :employeePassword, maritalStatus = :maritalStatus WHERE id =:id")
     @Modifying
-    int modifyEmployeeByPrimaryKey(@Param("staffName") String staffName,
+    int modifyEmployeeByPrimaryKey(@Param("employeeName") String employeeName,
                                    @Param("mobile") String mobile,
                                    @Param("email") String email,
                                    @Param("headImage") String headImage,

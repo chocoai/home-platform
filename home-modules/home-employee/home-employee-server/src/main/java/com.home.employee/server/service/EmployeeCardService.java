@@ -1,5 +1,6 @@
 package com.home.employee.server.service;
 
+import com.home.employee.common.dto.EmployeeCardDto;
 import com.home.employee.server.domain.EmployeeCard;
 
 /**
@@ -11,4 +12,9 @@ import com.home.employee.server.domain.EmployeeCard;
  */
 public interface EmployeeCardService{
 
+    /**
+     * 添加、修改身份证信息
+     * @param param EmployeeCardDto
+     */
+    void saveOrUpdateEmployeeCard(EmployeeCardDto param);
 }
