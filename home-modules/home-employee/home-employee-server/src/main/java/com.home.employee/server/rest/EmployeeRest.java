@@ -2,6 +2,9 @@ package com.home.employee.server.rest;
 
 import com.home.common.core.vo.ResultVo;
 import com.home.employee.common.dto.EmployeeDto;
+import com.home.employee.common.dto.EmployeePositionDto;
+import com.home.employee.server.service.EmployeeBuildingPositionService;
+import com.home.employee.server.service.EmployeeDistributionPositionService;
 import com.home.employee.server.service.EmployeeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -25,6 +28,10 @@ public class EmployeeRest {
 
     @Autowired
     private EmployeeService employeeService;
+    @Autowired
+    private EmployeeBuildingPositionService employeeBuildingPositionService;
+    @Autowired
+    private EmployeeDistributionPositionService employeeDistributionPositionService;
 
     @PostMapping
     @ApiOperation(value = "添加、修改员工信息",notes = "根据主键Id来判断为修改、添加")
@@ -33,6 +40,17 @@ public class EmployeeRest {
         return ResultVo.ok();
     }
 
+    @PostMapping("/developer-submit-position")
+    @ApiOperation(value = "开发商分配员工岗位")
+    public ResultVo developerSubmitPosition(@RequestBody EmployeePositionDto param){
+        employeeBuildingPositionService.developerSubmitPosition(param);
+        return ResultVo.ok();
+    }
 
-
+    @PostMapping("/distribution-submit-position")
+    @ApiOperation(value = "分销商商分配员工岗位")
+    public ResultVo distributionSubmitPosition(@RequestBody EmployeePositionDto param){
+        employeeDistributionPositionService.distributionSubmitPosition(param);
+        return ResultVo.ok();
+    }
 }

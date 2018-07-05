@@ -6,10 +6,13 @@ import com.home.common.core.exception.enums.developer.DeveloperExceptionCode;
 import com.home.common.core.exception.enums.employee.EmployeeExceptionCode;
 import com.home.common.core.vo.ResultVo;
 import com.home.developer.client.DeveloperClient;
+import com.home.developer.common.dto.BuildingPositionDto;
 import com.home.developer.common.dto.DeveloperDto;
 import com.home.employee.common.dto.EmployeeCardDto;
 import com.home.employee.common.dto.EmployeeDto;
+import com.home.employee.common.dto.EmployeePositionDto;
 import com.home.employee.server.domain.Employee;
+import com.home.employee.server.domain.EmployeeBuildingPosition;
 import com.home.employee.server.repository.EmployeeRepository;
 import com.home.employee.server.service.EmployeeCardService;
 import com.home.employee.server.service.EmployeeService;
@@ -87,4 +90,5 @@ public class EmployeeServiceImpl implements EmployeeService {
             }
         }
     }
+
 }

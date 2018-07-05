@@ -1,6 +1,7 @@
 package com.home.employee.server.service;
 
 import com.home.employee.common.dto.EmployeeDto;
+import com.home.employee.common.dto.EmployeePositionDto;
 import com.home.employee.server.domain.Employee;
 
 /**
@@ -17,4 +18,5 @@ public interface EmployeeService{
      * @param param EmployeeDto
      */
     void save(EmployeeDto param);
+
 }

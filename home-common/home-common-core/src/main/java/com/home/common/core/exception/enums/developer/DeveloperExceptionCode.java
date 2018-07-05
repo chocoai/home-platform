@@ -23,6 +23,7 @@ public enum DeveloperExceptionCode {
     SAVE_DEVELOPER_ACCOUNT(3001, "添加开发商出现异常"),
     SAVE_DEVELOPER_BUILDING(3001, "添加楼盘出现异常"),
     SAVE_DEVELOPER_BUILDING_POSITION(3001, "添加楼盘岗位出现异常"),
+    DEVELOPER_BUILDING_POSITION(3001,"开发商楼盘岗位不存在"),
 
     ;
     private Integer code;

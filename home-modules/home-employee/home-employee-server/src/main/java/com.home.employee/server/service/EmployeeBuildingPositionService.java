@@ -1,5 +1,6 @@
 package com.home.employee.server.service;
 
+import com.home.employee.common.dto.EmployeePositionDto;
 import com.home.employee.server.domain.EmployeeBuildingPosition;
 
 /**
@@ -11,4 +12,10 @@ import com.home.employee.server.domain.EmployeeBuildingPosition;
  */
 public interface EmployeeBuildingPositionService{
 
+
+    /**
+     * 开发商 分配 员工岗位
+     * @param param EmployeePositionDto
+     */
+    void developerSubmitPosition(EmployeePositionDto param);
 }
