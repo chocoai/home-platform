@@ -13,7 +13,7 @@ import java.io.IOException;
  * @email 190642964@qq.com
  * @create 2017-05-02
  */
-@Component
+//@Component
 public class CORSFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
