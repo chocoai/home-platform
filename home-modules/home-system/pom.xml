@@ -10,6 +10,11 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>home-system</artifactId>
     <version>${home.version}</version>
+    <modules>
+        <module>home-system-server</module>
+        <module>home-system-client</module>
+        <module>home-system-common</module>
+    </modules>
     <packaging>pom</packaging>
     <description>home系统相关</description>
 
