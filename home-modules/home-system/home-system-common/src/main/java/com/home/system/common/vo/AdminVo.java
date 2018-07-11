@@ -44,6 +44,11 @@ public class AdminVo {
     private String account;
 
     /**
+     * 密码
+     */
+    private String password;
+
+    /**
      * 状态(0-未激活,1-正常,2-锁定,3-注销)
      */
     private Integer state;

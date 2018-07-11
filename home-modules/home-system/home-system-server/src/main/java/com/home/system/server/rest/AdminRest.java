@@ -5,6 +5,7 @@ import com.home.system.common.dto.RoleDto;
 import com.home.system.common.vo.AdminVo;
 import com.home.system.server.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -22,8 +23,13 @@ public class AdminRest {
     private AdminService adminService;
 
     @GetMapping
-    public ResultVo<AdminVo> findDeveloper(@RequestParam(name = "primaryKey") Long primaryKey) {
+    public ResultVo<AdminVo> findAdmin(@RequestParam(name = "primaryKey") Long primaryKey) {
         return adminService.findAdminByPrimaryKey(primaryKey);
+    }
+
+    @GetMapping("/account")
+    public ResultVo<AdminVo> findAdminByAccount(@RequestParam(name = "account") String account) {
+        return adminService.findAdminByAccount(account);
     }
 
     @PostMapping("/role")

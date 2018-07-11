@@ -12,7 +12,9 @@
         <module>home-gateway</module>
 		<module>home-common</module>
 		<module>home-modules</module>
-	</modules>
+        <module>home-authentication</module>
+        <module>home-authorization</module>
+    </modules>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
