@@ -1,0 +1,23 @@
+package com.home.authorization.rest;
+
+import com.home.common.core.vo.ResultVo;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * 认证相关接口
+ *
+ * @author roger
+ * @email 190642964@qq.com
+ * @create 2018-07-11 15:36
+ **/
+@RestController
+@RequestMapping("/authentication")
+public class AuthenticationRest {
+
+    @RequestMapping("/user")
+    public ResultVo user(Authentication authentication){
+        return ResultVo.ok(authentication.getPrincipal());
+    }
+}

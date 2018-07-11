@@ -19,6 +19,11 @@
             <version>${home.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.home</groupId>
+            <artifactId>home-common-core</artifactId>
+            <version>${home.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-security</artifactId>
         </dependency>

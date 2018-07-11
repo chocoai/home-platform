@@ -1,21 +1,22 @@
 package com.home.authorization.config;
 
+import com.home.authorization.config.token.HomeRedisTokenStore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.TokenEnhancer;
+import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
-import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
+
+import java.util.Arrays;
 
 /**
  * 认证服务器逻辑
@@ -30,6 +31,8 @@ public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
     private AuthenticationManager authenticationManager;
+    @Autowired
+    private RedisConnectionFactory redisConnectionFactory;
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -50,27 +53,32 @@ public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+//        TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
+//        tokenEnhancerChain.setTokenEnhancers(Arrays.asList());
+
         endpoints
                 .authenticationManager(authenticationManager)
-                .tokenStore(jwtTokenStore())
-                .accessTokenConverter(jwtAccessTokenConverter());
+                .tokenStore(redisTokenStore());
+//                .accessTokenConverter(jwtAccessTokenConverter());
     }
 
     @Bean
-    public TokenStore jwtTokenStore() {
-        return new JwtTokenStore(jwtAccessTokenConverter());
+    public TokenStore redisTokenStore() {
+        HomeRedisTokenStore tokenStore = new HomeRedisTokenStore(redisConnectionFactory);
+        tokenStore.setPrefix("home_");
+        return tokenStore;
     }
 
-    @Bean
-    public JwtAccessTokenConverter jwtAccessTokenConverter() {
-        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        // 生产JWT的秘钥
-        converter.setSigningKey("home");
-        return converter;
-    }
+//    @Bean
+//    public JwtAccessTokenConverter jwtAccessTokenConverter() {
+//        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+//        // 生产JWT的秘钥
+//        converter.setSigningKey("home");
+//        return converter;
+//    }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+//    @Bean
+//    public TokenEnhancer tokenEnhancer(){
+//
+//    }
 }
