@@ -20,7 +20,7 @@ import org.springframework.web.filter.CorsFilter;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableZuulProxy
-@ComponentScan({"com.home.common.web"})
+@ComponentScan({"com.home.common.web","com.home.gateway"})
 public class GatewayApplication {
     public static void main(String[] args){
         SpringApplication.run(GatewayApplication.class,args);

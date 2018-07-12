@@ -20,7 +20,7 @@ import java.util.Random;
 @org.springframework.stereotype.Component("imageValidateCodeGenerator")
 public class ImageValidateCodeGenerator implements ValidateCodeGenerator {
 
-    @Autowired(required = false)
+    @Autowired
     private ValidateCodeProperties validateCodeProperties;
 
     /**

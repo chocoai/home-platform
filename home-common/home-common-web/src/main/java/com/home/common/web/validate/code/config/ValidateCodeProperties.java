@@ -1,6 +1,7 @@
 package com.home.common.web.validate.code.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * 验证码相关配置
@@ -9,6 +10,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @email 190642964@qq.com
  * @create 2018-07-12 14:17
  **/
+@Configuration
 @ConfigurationProperties(prefix = "custom.code")
 public class ValidateCodeProperties {
 
