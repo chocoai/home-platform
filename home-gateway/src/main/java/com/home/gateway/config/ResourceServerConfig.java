@@ -11,7 +11,9 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 
+import javax.servlet.Filter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +32,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     @Autowired
     private RedisConnectionFactory redisConnectionFactory;
-
+    @Autowired
+    private Filter validateCodeFilter;
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
@@ -39,6 +42,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
+        // 配置验证码过滤器在授权之前
+        http.addFilterBefore(validateCodeFilter, AbstractAuthenticationProcessingFilter.class);
 
         ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry expressionInterceptUrlRegistry = http.authorizeRequests();
         for (String anon : anons){

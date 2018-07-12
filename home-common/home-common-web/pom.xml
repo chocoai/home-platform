@@ -13,5 +13,19 @@
     <packaging>jar</packaging>
     <description>home通用web相关</description>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.home</groupId>
+            <artifactId>home-common-core</artifactId>
+            <version>${home.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
 </project>

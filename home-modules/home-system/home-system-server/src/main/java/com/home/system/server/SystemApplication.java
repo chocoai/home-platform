@@ -3,6 +3,7 @@ package com.home.system.server;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * ${DESCRIPTION}
@@ -13,6 +14,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  **/
 @SpringBootApplication
 @EnableDiscoveryClient
+@ComponentScan({"com.home.common.web"})
 public class SystemApplication {
     public static void main(String[] args) {
         SpringApplication.run(SystemApplication.class,args);
