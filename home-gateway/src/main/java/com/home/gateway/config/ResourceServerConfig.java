@@ -28,8 +28,9 @@ import java.util.List;
 @EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
-    private final static List<String> anons = new ArrayList<>();
 
+    @Autowired(required = false)
+    private AnonConfig anonConfig;
     @Autowired
     private RedisConnectionFactory redisConnectionFactory;
     @Autowired
@@ -46,7 +47,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         http.addFilterBefore(validateCodeFilter, AbstractAuthenticationProcessingFilter.class);
 
         ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry expressionInterceptUrlRegistry = http.authorizeRequests();
-        for (String anon : anons){
+        for (String anon : anonConfig.getAnon()){
             expressionInterceptUrlRegistry.antMatchers(anon).permitAll();
         }
 

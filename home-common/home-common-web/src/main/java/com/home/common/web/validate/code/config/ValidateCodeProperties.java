@@ -9,7 +9,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @email 190642964@qq.com
  * @create 2018-07-12 14:17
  **/
-@ConfigurationProperties(prefix = "custom.security.code")
+@ConfigurationProperties(prefix = "custom.code")
 public class ValidateCodeProperties {
 
     private ImageCodeProperties image = new ImageCodeProperties();
