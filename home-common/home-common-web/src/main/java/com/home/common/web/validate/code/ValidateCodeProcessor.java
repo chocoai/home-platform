@@ -15,10 +15,10 @@ public interface ValidateCodeProcessor {
      * 处理验证码请求
      *
      * @param request ServletWebRequest
-     * @return random
+     * @return ValidateCodeVo
      * @throws Exception Exception
      */
-    String create(ServletWebRequest request) throws Exception;
+    ValidateCodeVo create(ServletWebRequest request) throws Exception;
 
     /**
      * 校验验证码

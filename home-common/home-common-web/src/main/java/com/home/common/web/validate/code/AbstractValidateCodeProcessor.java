@@ -2,6 +2,7 @@ package com.home.common.web.validate.code;
 
 import com.home.common.core.exception.ValidateCodeException;
 import com.home.common.core.exception.enums.system.SystemExceptionCode;
+import com.home.common.web.validate.code.image.ImageValidateCode;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.request.ServletWebRequest;
@@ -27,14 +28,21 @@ public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> impl
     private ValidateCodeRepository validateCodeRepository;
 
     @Override
-    public String create(ServletWebRequest request) throws Exception {
+    public ValidateCodeVo create(ServletWebRequest request) throws Exception {
         // 创建验证码
         C validateCode = generate(request);
         // 保存验证码到session中
         String random = save(validateCode);
         // 发送验证码
         send(request, validateCode);
-        return random;
+
+        if (validateCode instanceof ImageValidateCode) {
+            ImageValidateCode image = (ImageValidateCode) validateCode;
+            return new ValidateCodeVo(image.getCode(), image.getImage());
+        }
+
+        ValidateCode code = validateCode;
+        return new ValidateCodeVo(code.getCode());
     }
 
     /**
@@ -91,25 +99,25 @@ public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> impl
 
         C cacheCodeObject = (C) validateCodeRepository.get(random);
 
-        if (null == cacheCodeObject){
-            throw new ValidateCodeException(SystemExceptionCode.VALIDATE_CODE_NON.getCode(),SystemExceptionCode.VALIDATE_CODE_NON.getMessage());
+        if (null == cacheCodeObject) {
+            throw new ValidateCodeException(SystemExceptionCode.VALIDATE_CODE_NON.getCode(), SystemExceptionCode.VALIDATE_CODE_NON.getMessage());
         }
 
         String cacheCode = cacheCodeObject.toString();
 
         if (StringUtils.isEmpty(code)) {
             validateCodeRepository.get(random);
-            throw new ValidateCodeException(SystemExceptionCode.VALIDATE_CODE_INPUT_NON.getCode(),SystemExceptionCode.VALIDATE_CODE_INPUT_NON.getMessage());
+            throw new ValidateCodeException(SystemExceptionCode.VALIDATE_CODE_INPUT_NON.getCode(), SystemExceptionCode.VALIDATE_CODE_INPUT_NON.getMessage());
         }
 
         if (StringUtils.isEmpty(cacheCode)) {
             validateCodeRepository.get(random);
-            throw new ValidateCodeException(SystemExceptionCode.VALIDATE_CODE_EXPIRE.getCode(),SystemExceptionCode.VALIDATE_CODE_EXPIRE.getMessage());
+            throw new ValidateCodeException(SystemExceptionCode.VALIDATE_CODE_EXPIRE.getCode(), SystemExceptionCode.VALIDATE_CODE_EXPIRE.getMessage());
         }
 
         if (!StringUtils.equals(cacheCode, code)) {
             validateCodeRepository.get(random);
-            throw new ValidateCodeException(SystemExceptionCode.VALIDATE_CODE_NON_MATCH.getCode(),SystemExceptionCode.VALIDATE_CODE_NON_MATCH.getMessage());
+            throw new ValidateCodeException(SystemExceptionCode.VALIDATE_CODE_NON_MATCH.getCode(), SystemExceptionCode.VALIDATE_CODE_NON_MATCH.getMessage());
         }
         validateCodeRepository.get(random);
     }

@@ -1,6 +1,8 @@
 package com.home.system.server.rest;
 
+import com.home.common.core.vo.ResultVo;
 import com.home.common.web.validate.code.ValidateCodeProcessorHolder;
+import com.home.common.web.validate.code.ValidateCodeVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,8 +34,9 @@ public class ValidateCodeRest {
      * @throws Exception
      */
     @RequestMapping(value = "/code/{type}", method = RequestMethod.GET)
-    public void createCodeImage(HttpServletRequest request, HttpServletResponse response,
-                                @PathVariable String type) throws Exception {
-        validateCodeProcessorHolder.findValidateCodeProcessor(type).create(new ServletWebRequest(request,response));
+    public ResultVo<ValidateCodeVo> createCodeImage(HttpServletRequest request, HttpServletResponse response,
+                                    @PathVariable String type) throws Exception {
+        ValidateCodeVo validateCodeVo = validateCodeProcessorHolder.findValidateCodeProcessor(type).create(new ServletWebRequest(request,response));
+        return ResultVo.ok(validateCodeVo);
     }
 }
