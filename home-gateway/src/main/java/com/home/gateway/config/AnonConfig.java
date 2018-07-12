@@ -1,6 +1,7 @@
 package com.home.gateway.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
  * @email 190642964@qq.com
  * @create 2018-07-12 17:45
  **/
+@Configuration
 @ConfigurationProperties(prefix = "custom.security.urls")
 public class AnonConfig {
 
