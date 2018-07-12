@@ -2,7 +2,7 @@ package com.home.common.web.validate.code.sms;
 
 
 import com.home.common.web.validate.code.AbstractValidateCodeProcessor;
-import com.home.system.server.component.validate.code.ValidateCode;
+import com.home.common.web.validate.code.ValidateCode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.context.request.ServletWebRequest;

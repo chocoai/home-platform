@@ -1,10 +1,10 @@
 package com.home.common.web.validate.code.sms;
 
 
+import com.home.common.web.validate.code.ValidateCode;
 import com.home.common.web.validate.code.ValidateCodeGenerator;
-import com.home.system.server.component.validate.code.config.ValidateCodeProperties;
-import com.home.system.server.component.validate.code.ValidateCode;
-import org.apache.commons.lang.RandomStringUtils;
+import com.home.common.web.validate.code.config.ValidateCodeProperties;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.ServletWebRequest;
