@@ -15,7 +15,7 @@ public class ValidateCodeVo {
         this.random = random;
     }
 
-    public ValidateCodeVo(String random, BufferedImage image) {
+    public ValidateCodeVo(String random, String image) {
         this.random = random;
         this.image = image;
     }
@@ -28,7 +28,7 @@ public class ValidateCodeVo {
     /**
      * 图片
      */
-    private BufferedImage image;
+    private String image;
 
     public String getRandom() {
         return random;
@@ -38,11 +38,11 @@ public class ValidateCodeVo {
         this.random = random;
     }
 
-    public BufferedImage getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(BufferedImage image) {
+    public void setImage(String image) {
         this.image = image;
     }
 }

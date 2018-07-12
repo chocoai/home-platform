@@ -6,7 +6,12 @@ import com.home.common.web.validate.code.image.ImageValidateCode;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.request.ServletWebRequest;
+import sun.misc.BASE64Encoder;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.Map;
 import java.util.UUID;
 
@@ -38,11 +43,26 @@ public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> impl
 
         if (validateCode instanceof ImageValidateCode) {
             ImageValidateCode image = (ImageValidateCode) validateCode;
-            return new ValidateCodeVo(image.getCode(), image.getImage());
+            String base64Image = toBase64(image.getImage());
+            return new ValidateCodeVo(random, base64Image);
         }
+        return new ValidateCodeVo(random);
+    }
 
-        ValidateCode code = validateCode;
-        return new ValidateCodeVo(code.getCode());
+    /**
+     * 将验证码图片转换为Base64字符
+     * @param image BufferedImage
+     * @return Base64字符
+     * @throws Exception
+     */
+    private String toBase64(BufferedImage image) throws Exception {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        ImageIO.write(image, "png", byteArrayOutputStream);
+        byte[] bytes = byteArrayOutputStream.toByteArray();
+        BASE64Encoder encoder = new BASE64Encoder();
+        String png_base64 = encoder.encodeBuffer(bytes).trim();
+        png_base64 = png_base64.replaceAll("\n", "").replaceAll("\r", "");
+        return png_base64;
     }
 
     /**
