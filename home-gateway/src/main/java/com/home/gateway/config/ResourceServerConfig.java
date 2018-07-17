@@ -1,6 +1,7 @@
 package com.home.gateway.config;
 
 import com.home.gateway.config.token.HomeRedisTokenStore;
+import com.home.gateway.handler.HomeAccessDeniedHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,10 +37,13 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     private RedisConnectionFactory redisConnectionFactory;
     @Autowired
     private Filter validateCodeFilter;
+    @Autowired
+    private HomeAccessDeniedHandler homeAccessDeniedHandler;
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
         resources.tokenStore(redisTokenStore());
+        resources.accessDeniedHandler(homeAccessDeniedHandler);
     }
 
     @Override
