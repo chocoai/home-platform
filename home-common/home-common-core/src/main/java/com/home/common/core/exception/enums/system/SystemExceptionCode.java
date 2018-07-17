@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public enum SystemExceptionCode {
-    VALIDATE_CODE_NON(2000, "验证码为空或已过去"),
+    VALIDATE_CODE_NON(2000, "验证码为空或已过期"),
     VALIDATE_CODE_INPUT_NON(2001, "验证码为空"),
     VALIDATE_CODE_EXPIRE(2002, "验证码已过期"),
     VALIDATE_CODE_NON_MATCH(2003, "验证码不匹配"),

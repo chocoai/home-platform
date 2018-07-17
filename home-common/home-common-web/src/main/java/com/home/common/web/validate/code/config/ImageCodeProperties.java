@@ -12,11 +12,11 @@ public class ImageCodeProperties extends SmsCodeProperties{
     /**
      * 验证码图片的宽度
      */
-    private int width = 67;
+    private int width = 100;
     /**
      * 验证码图片的高度
      */
-    private int height = 23;
+    private int height = 30;
 
     public int getWidth() {
         return width;

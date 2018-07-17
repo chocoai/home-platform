@@ -123,7 +123,7 @@ public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> impl
             throw new ValidateCodeException(SystemExceptionCode.VALIDATE_CODE_NON.getCode(), SystemExceptionCode.VALIDATE_CODE_NON.getMessage());
         }
 
-        String cacheCode = cacheCodeObject.toString();
+        String cacheCode = cacheCodeObject.getCode().toString();
 
         if (StringUtils.isEmpty(code)) {
             validateCodeRepository.get(random);
