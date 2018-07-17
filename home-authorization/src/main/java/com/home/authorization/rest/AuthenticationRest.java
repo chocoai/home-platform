@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/authentication")
 public class AuthenticationRest {
 
+    /**
+     * 获取当前登陆用户信息
+     */
     @RequestMapping("/user")
     public ResultVo user(Authentication authentication){
         return ResultVo.ok(authentication.getPrincipal());
