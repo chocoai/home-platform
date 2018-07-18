@@ -24,10 +24,10 @@ public class RoleAuthorization {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-    /**
-     * 管理员Id
-     */
-	private Long adminId;
+	/**
+	 * 角色Id
+	 */
+	private Long roleId;
 
     /**
      * 权限Id

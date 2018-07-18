@@ -2,6 +2,7 @@ package com.home.gateway.config;
 
 import com.home.gateway.config.token.HomeRedisTokenStore;
 import com.home.gateway.handler.HomeAccessDeniedHandler;
+import com.home.gateway.handler.HomeAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -44,13 +45,17 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     private HomeAccessDeniedHandler homeAccessDeniedHandler;
     @Autowired
     private OAuth2WebSecurityExpressionHandler expressionHandler;
+    @Autowired
+    private HomeAuthenticationEntryPoint homeAuthenticationEntryPoint;
 
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
         resources.tokenStore(redisTokenStore());
-        resources.accessDeniedHandler(homeAccessDeniedHandler);
         resources.expressionHandler(expressionHandler);
+        resources.accessDeniedHandler(homeAccessDeniedHandler);
+        // 没有Token、Token异常时的处理
+        resources.authenticationEntryPoint(homeAuthenticationEntryPoint);
     }
 
     @Override
@@ -63,10 +68,16 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
             expressionInterceptUrlRegistry.antMatchers(anon).permitAll();
         }
 
-        expressionInterceptUrlRegistry
-                .anyRequest().authenticated()
-                .and()
-                .csrf().disable();
+        expressionInterceptUrlRegistry.anyRequest()
+                .access("@permissionService.hasPermission(request,authentication)");
+
+//        expressionInterceptUrlRegistry
+//                .anyRequest().authenticated()
+//                .and()
+//                .csrf().disable();
+//                .anyRequest().authenticated()
+//                .and()
+//                .csrf().disable();
     }
 
     @Bean

@@ -2,7 +2,9 @@ package com.home.system.common.vo;
 
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 管理员Vo
@@ -62,4 +64,6 @@ public class AdminVo {
      * 登录次数
      */
     private Integer loginCount;
+
+    private List<RoleVo> roleVoList = new ArrayList<>();
 }

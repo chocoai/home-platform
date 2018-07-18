@@ -12,5 +12,8 @@ public interface HomeConstant {
      * 验证码缓存Key 前缀
      */
     String VALIDATE_CODE_PREFIX = "home_validate_code_";
-
+    /**
+     * 基础角色名
+     */
+    String BASIC_ROLE_NAEM = "BASIC_ROLE";
 }

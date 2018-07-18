@@ -1,18 +1,22 @@
 package com.home.authorization.service;
 
+import com.home.common.core.constant.HomeConstant;
 import com.home.common.core.vo.ResultVo;
 import com.home.system.client.AdminClient;
 import com.home.system.common.vo.AdminVo;
+import com.home.system.common.vo.RoleVo;
 import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -60,8 +64,16 @@ public class UserDetailServiceImpl implements UserDetailsService {
             accountNonLocked = false;
         }
 
+
         // 授权
-        List<GrantedAuthority> authorities = AuthorityUtils.commaSeparatedStringToAuthorityList("admin");
+//        List<GrantedAuthority> authorities = AuthorityUtils.commaSeparatedStringToAuthorityList("admin");
+
+        List<RoleVo> roleVoList = adminVo.getRoleVoList();
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        for (RoleVo role : roleVoList) {
+            authorities.add(new SimpleGrantedAuthority(role.getRoleName()));
+        }
+        authorities.add(new SimpleGrantedAuthority(HomeConstant.BASIC_ROLE_NAEM));
         return new User(adminVo.getAccount(),adminVo.getPassword(),enabled,accountNonExpired,credentialsNonExpired,accountNonLocked,authorities);
     }
 }

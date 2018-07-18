@@ -72,7 +72,7 @@ public class ResultVo<T> {
     }
 
     /**
-     * 访问被拒绝
+     * 无权限访问
      *
      * @return ResultVo
      */
@@ -82,6 +82,19 @@ public class ResultVo<T> {
         result.setMessage(HomeHttpStatus.Unauthorized.getMessage());
         return result;
     }
+
+    /**
+     * 拒绝访问
+     *
+     * @return ResultVo
+     */
+    public static ResultVo forbidden() {
+        ResultVo result = new ResultVo();
+        result.setCode(HomeHttpStatus.Forbidden.getCode());
+        result.setMessage(HomeHttpStatus.Forbidden.getMessage());
+        return result;
+    }
+
 
     /**
      * 服务器繁忙

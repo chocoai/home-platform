@@ -22,7 +22,8 @@ public enum HomeHttpStatus {
     OK(200, "请求成功!"),
     DataEmpty(201, "请求成功,查询无数据"),
     BadRequest(400, "参数错误"),
-    Unauthorized (401, "访问被拒绝"),
+    Unauthorized (401, "没有权限访问"),
+    Forbidden (403, "拒绝访问"),
     ServerError (500, "服务器繁忙"),
     ;
     private Integer code;
