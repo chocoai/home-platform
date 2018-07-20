@@ -12,4 +12,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 */
 public interface AdminRoleRepository extends JpaRepository<AdminRole,Long> {
 
+    /**
+     * 获取是否添加关系表数据
+     * @param adminId 管理员Id
+     * @param roleId 角色Id
+     * @param deleteFlag 删除标志
+     * @return
+     */
+    int countAdminRoleByAdminIdAndRoleIdAndDeleteFlag(Long adminId,Long roleId,Boolean deleteFlag);
 }

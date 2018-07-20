@@ -2,7 +2,9 @@ package com.home.system.server.service;
 
 import com.home.common.core.vo.ResultVo;
 import com.home.system.common.vo.AuthorizationVo;
+import com.home.system.common.vo.ItemVo;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -20,4 +22,11 @@ public interface AuthorizationService{
      * @return ResultVo<Set<AuthorizationVo>>
      */
     ResultVo<Set<AuthorizationVo>> findAuthorizationByRole(String roleName);
+
+    /**
+     * 根据账号获取权限
+     * @param account 账号
+     * @return  ResultVo<List<ItemVo>>
+     */
+    ResultVo<List<ItemVo>> findAuthorizationByAccount(String account);
 }

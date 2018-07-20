@@ -5,6 +5,8 @@ import com.home.common.core.vo.ResultVo;
 import com.home.system.client.AuthorizationClient;
 import com.home.system.common.vo.AuthorizationVo;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -27,6 +29,8 @@ import java.util.Set;
 @Service("permissionService")
 public class PermissionServiceImpl implements PermissionService {
 
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Autowired(required = false)
     private AuthorizationClient authorizationClient;
 
@@ -46,23 +50,25 @@ public class PermissionServiceImpl implements PermissionService {
             Set<AuthorizationVo> urls = new HashSet<>();
             for (SimpleGrantedAuthority authority : grantedAuthorityList) {
                 String roleName = authority.getAuthority();
-                if (StringUtils.equals(HomeConstant.BASIC_ROLE_NAEM,roleName)){
+                if (StringUtils.equals(HomeConstant.BASIC_ROLE_NAEM, roleName)) {
                     continue;
                 }
                 ResultVo<Set<AuthorizationVo>> resultVo = authorizationClient.findAuthorizationByRole(roleName);
                 Set<AuthorizationVo> authorizationVos = (Set<AuthorizationVo>) ResultVo.verifyResponse(resultVo);
-                if (!CollectionUtils.isEmpty(authorizationVos)){
+                if (!CollectionUtils.isEmpty(authorizationVos)) {
                     urls.addAll(authorizationVos);
                 }
+
             }
 
             for (AuthorizationVo menu : urls) {
-                if (StringUtils.isNotEmpty(menu.getTarget()) && antPathMatcher.match(menu.getTarget(), request.getRequestURI())) {
+                if (StringUtils.isNotEmpty(menu.getUrl()) && antPathMatcher.match(menu.getUrl(), request.getRequestURI())) {
                     hasPermission = true;
-                    break;
                 }
             }
         }
+
+        logger.debug("鉴权 -- url : {} --  是否有权限: {} ", request.getRequestURI(), hasPermission);
 
         return hasPermission;
     }

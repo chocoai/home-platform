@@ -3,6 +3,7 @@ package com.home.system.server.service;
 import com.home.common.core.vo.ResultVo;
 import com.home.system.common.vo.AdminVo;
 import com.home.system.server.domain.Admin;
+import org.springframework.data.domain.Page;
 
 /**
  * 管理员 业务处理接口
@@ -26,4 +27,6 @@ public interface AdminService{
      * @return ResultVo<AdminVo>
      */
     ResultVo<AdminVo> findAdminByAccount(String account);
+
+    ResultVo<Page<AdminVo>> page(int page, int size);
 }

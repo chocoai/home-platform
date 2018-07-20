@@ -11,4 +11,10 @@ import com.home.system.server.domain.AdminRole;
  */
 public interface AdminRoleService{
 
+    /**
+     * 管理员分配角色
+     * @param adminId 管理员Id
+     * @param roleIds 角色Id
+     */
+    void adminAssignRole(Long adminId,Long...roleIds);
 }

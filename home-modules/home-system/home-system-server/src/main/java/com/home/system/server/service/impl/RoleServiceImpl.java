@@ -1,5 +1,6 @@
 package com.home.system.server.service.impl;
 
+import com.home.common.core.vo.ResultVo;
 import com.home.system.common.vo.RoleVo;
 import com.home.system.server.domain.Role;
 import com.home.system.server.repository.RoleRepository;
@@ -10,8 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 角色 业务处理实现
@@ -42,5 +43,29 @@ public class RoleServiceImpl implements RoleService{
             roleVos.add(roleVo);
         }
         return roleVos;
+    }
+
+    @Override
+    public ResultVo<List<RoleVo>> findAll() {
+        List<Role> roleList =  roleRepository.findByDeleteFlag(false);
+        if(CollectionUtils.isEmpty(roleList)){
+            return ResultVo.dataEmpty();
+        }
+
+        List<RoleVo> roleVos = roleList.stream()
+                .map(role -> {
+                    RoleVo roleVo = new RoleVo();
+                    roleVo.setId(role.getId());
+                    roleVo.setRoleName(role.getRoleName());
+                    roleVo.setRemark(role.getRemark());
+                    return roleVo;
+                }).collect(Collectors.toList());
+        return ResultVo.ok(roleVos);
+    }
+
+    @Override
+    public ResultVo<List<Long>> findHasRoleByAccount(String account) {
+        List<Long> longs = roleRepository.findHasRoleByAccount(account);
+        return ResultVo.ok(longs);
     }
 }

@@ -64,6 +64,11 @@ public class AuthorizationVo {
      */
 	private String target;
 
+	/**
+	 * 权限访问地址
+	 */
+	private String url;
+
     /**
      * 资源级别(1 一级/2 二级/3 三级)
      */

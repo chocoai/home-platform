@@ -6,10 +6,12 @@ import com.home.system.common.vo.RoleVo;
 import com.home.system.server.domain.Admin;
 import com.home.system.server.repository.AdminRepository;
 import com.home.system.server.service.AdminService;
-
 import com.home.system.server.service.RoleService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -55,5 +57,12 @@ public class AdminServiceImpl implements AdminService {
         List<RoleVo> roleVos = roleService.findRoleByAdminId(admin.getId());
         adminVo.setRoleVoList(roleVos);
         return ResultVo.ok(adminVo);
+    }
+
+    @Override
+    public ResultVo<Page<AdminVo>> page(int page, int size) {
+        Pageable pageable = new PageRequest(page, size);
+        Page<Admin> admins = adminRepository.findAll(pageable);
+        return ResultVo.ok(admins);
     }
 }

@@ -1,5 +1,6 @@
 package com.home.system.server.service;
 
+import com.home.common.core.vo.ResultVo;
 import com.home.system.common.vo.RoleVo;
 import com.home.system.server.domain.Role;
 
@@ -20,4 +21,17 @@ public interface RoleService{
      * @return List<RoleVo>
      */
     List<RoleVo> findRoleByAdminId(Long adminId);
+
+    /**
+     * 查询所有角色
+     * @return ResultVo<List<RoleVo>>
+     */
+    ResultVo<List<RoleVo>> findAll();
+
+    /**
+     * 根据账户 查询已有的角色
+     * @param account 账号
+     * @return ResultVo<List<Long>>
+     */
+    ResultVo<List<Long>> findHasRoleByAccount(String account);
 }

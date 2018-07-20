@@ -1,10 +1,13 @@
 package com.home.system.server.rest;
 
 import com.home.common.core.vo.ResultVo;
+import com.home.system.common.dto.AdminRoleDto;
 import com.home.system.common.dto.RoleDto;
 import com.home.system.common.vo.AdminVo;
+import com.home.system.server.service.AdminRoleService;
 import com.home.system.server.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,9 +24,11 @@ public class AdminRest {
 
     @Autowired
     private AdminService adminService;
+    @Autowired
+    private AdminRoleService adminRoleService;
 
-    @GetMapping
-    public ResultVo<AdminVo> findAdmin(@RequestParam(name = "primaryKey") Long primaryKey) {
+    @GetMapping("{primaryKey}")
+    public ResultVo<AdminVo> findAdmin(@PathVariable(name = "primaryKey") Long primaryKey) {
         return adminService.findAdminByPrimaryKey(primaryKey);
     }
 
@@ -32,24 +37,15 @@ public class AdminRest {
         return adminService.findAdminByAccount(account);
     }
 
-    @PostMapping("/role")
-    public ResultVo saveRole(@RequestBody RoleDto param) {
-        System.out.println("PostMapping");
-        System.out.println(param);
-        return ResultVo.ok();
+    @GetMapping("/page")
+    public ResultVo<Page<AdminVo>> findAdminPage(@RequestParam(name = "page") Integer page,
+                                                @RequestParam(name = "size") Integer size) {
+        return adminService.page(page,size);
     }
 
-    @PutMapping("/role")
-    public ResultVo putRole(@RequestBody RoleDto param) {
-        System.out.println("PutMapping");
-        System.out.println(param);
-        return ResultVo.ok();
-    }
-
-    @DeleteMapping("/role")
-    public ResultVo deleteRole(@RequestParam(name = "primaryKey") Long primaryKey) {
-        System.out.println("DeleteMapping");
-        System.out.println(primaryKey);
+    @PostMapping("/assign-role")
+    public ResultVo adminAssignROle(@RequestBody AdminRoleDto param) {
+        adminRoleService.adminAssignRole(param.getAdminId(),param.getRoleIds());
         return ResultVo.ok();
     }
 }
