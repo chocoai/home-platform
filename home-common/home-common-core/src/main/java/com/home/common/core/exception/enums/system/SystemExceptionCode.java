@@ -20,6 +20,9 @@ public enum SystemExceptionCode {
     VALIDATE_CODE_EXPIRE(2002, "验证码已过期"),
     VALIDATE_CODE_NON_MATCH(2003, "验证码不匹配"),
     VALIDATE_CODE_GENERATOR_NON(2004, "当前验证码生成器不支持"),
+    ADMIN_NON_EXISTENT(2005, "当前用户不存在"),
+    AUTHORIZATION_NON_EXISTENT(2006, "当前菜单不存在"),
+    ROLE_NON_EXISTENT(2007, "当前角色不存在"),
     ;
 
     private Integer code;

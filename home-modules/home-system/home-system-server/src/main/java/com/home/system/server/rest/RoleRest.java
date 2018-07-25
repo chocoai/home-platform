@@ -25,9 +25,33 @@ public class RoleRest {
     /**
      * 获取所有角色
      */
-    @GetMapping("/all")
+    @GetMapping
     public ResultVo<List<RoleVo>> findRole() {
         return roleService.findAll();
+    }
+
+    @GetMapping("/{primaryKey}")
+    public ResultVo<RoleVo> findRole(@PathVariable Long primaryKey) {
+        RoleVo roleVo = roleService.findRoleById(primaryKey);
+        return ResultVo.ok(roleVo);
+    }
+
+    @PostMapping
+    public ResultVo save(@RequestBody RoleVo param) {
+        roleService.role(param);
+        return ResultVo.ok();
+    }
+
+    @PutMapping
+    public ResultVo modify(@RequestBody RoleVo param) {
+        roleService.role(param);
+        return ResultVo.ok();
+    }
+
+    @DeleteMapping()
+    public ResultVo deleteRole(@RequestParam Long primaryKey) {
+        roleService.deleteRole(primaryKey);
+        return ResultVo.ok();
     }
 
     /**

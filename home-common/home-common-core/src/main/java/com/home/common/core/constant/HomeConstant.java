@@ -15,5 +15,17 @@ public interface HomeConstant {
     /**
      * 基础角色名
      */
-    String BASIC_ROLE_NAEM = "BASIC_ROLE";
+    String BASIC_ROLE_NAME = "BASIC_ROLE";
+    /**
+     * 不修改管理员密码的标志
+     */
+    String NO_MODIFY_PASSWORD = "NO";
+    /**
+     * 获取所有子节点
+     */
+    int AUTHORIZATION_CHILD_TYPE = 0;
+    /**
+     * 权限根节点ID
+     */
+    long AUTHORIZATION_ROOT_ID = 0;
 }

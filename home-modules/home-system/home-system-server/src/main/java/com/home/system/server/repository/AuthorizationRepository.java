@@ -49,4 +49,16 @@ public interface AuthorizationRepository extends JpaRepository<Authorization, Lo
             "AND ra.delete_flag = 0 " +
             "AND a.delete_flag = 0", nativeQuery = true)
     List<Authorization> findByAccountAndParentId(@Param("account") String account, @Param("parentId") Long parentId);
+
+    /**
+     * 根据父节点和权限类型获取权限数据
+     *
+     * @param parentId     父节点Id
+     * @param terminalType 终端类型(0-PC端,1-Mobile端)
+     * @return List<Authorization>
+     */
+    @Query(value = "SELECT * FROM sys_authorization WHERE parent_id = :parentId AND terminal_type = :terminalType AND delete_flag = 0",nativeQuery = true)
+    List<Authorization> findByParentIdAndTerminalTypeAndDeleteFlag(@Param("parentId") Long parentId, @Param("terminalType") Integer terminalType);
+
+
 }

@@ -5,10 +5,8 @@ import com.home.common.core.vo.ResultVo;
 import com.home.system.client.AdminClient;
 import com.home.system.common.vo.AdminVo;
 import com.home.system.common.vo.RoleVo;
-import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -73,7 +71,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
         for (RoleVo role : roleVoList) {
             authorities.add(new SimpleGrantedAuthority(role.getRoleName()));
         }
-        authorities.add(new SimpleGrantedAuthority(HomeConstant.BASIC_ROLE_NAEM));
+        authorities.add(new SimpleGrantedAuthority(HomeConstant.BASIC_ROLE_NAME));
         return new User(adminVo.getAccount(),adminVo.getPassword(),enabled,accountNonExpired,credentialsNonExpired,accountNonLocked,authorities);
     }
 }

@@ -50,7 +50,7 @@ public class PermissionServiceImpl implements PermissionService {
             Set<AuthorizationVo> urls = new HashSet<>();
             for (SimpleGrantedAuthority authority : grantedAuthorityList) {
                 String roleName = authority.getAuthority();
-                if (StringUtils.equals(HomeConstant.BASIC_ROLE_NAEM, roleName)) {
+                if (StringUtils.equals(HomeConstant.BASIC_ROLE_NAME, roleName)) {
                     continue;
                 }
                 ResultVo<Set<AuthorizationVo>> resultVo = authorizationClient.findAuthorizationByRole(roleName);

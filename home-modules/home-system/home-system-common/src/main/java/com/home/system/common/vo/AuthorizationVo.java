@@ -3,6 +3,7 @@ package com.home.system.common.vo;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 权限 实体类
@@ -79,4 +80,8 @@ public class AuthorizationVo {
      */
 	private String remark;
 
+	/**
+	 * 子节点集合
+	 */
+	private List<AuthorizationVo> children = null;
 }

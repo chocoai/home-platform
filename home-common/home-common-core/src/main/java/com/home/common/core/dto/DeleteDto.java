@@ -14,5 +14,5 @@ public class DeleteDto {
     /**
      * 需要删除的数据Id集合
      */
-    private Long[] Ids;
+    private Long[] ids;
 }
