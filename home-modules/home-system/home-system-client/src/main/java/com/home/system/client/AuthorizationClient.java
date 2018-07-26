@@ -3,6 +3,7 @@ package com.home.system.client;
 import com.home.common.core.vo.ResultVo;
 import com.home.system.common.vo.AuthorizationVo;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,6 +36,7 @@ public interface AuthorizationClient {
     @RequestMapping(value = SYSTEM_AUTHORIZATION_SERVER_PREFIX + "/role", method = RequestMethod.GET)
     ResultVo<Set<AuthorizationVo>> findAuthorizationByRole(@RequestParam(name = "roleName") String roleName);
 
+    @Component
     class AuthorizationClientFallback implements AuthorizationClient {
         @Override
         public ResultVo<Set<AuthorizationVo>> findAuthorizationByRole(String roleName) {

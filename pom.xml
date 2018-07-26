@@ -12,8 +12,8 @@
         <module>home-gateway</module>
 		<module>home-common</module>
 		<module>home-modules</module>
-        <module>home-authentication</module>
         <module>home-authorization</module>
+        <module>home-hystrix-dashboard</module>
     </modules>
 
 	<parent>

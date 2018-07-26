@@ -3,6 +3,7 @@ package com.home.system.client;
 import com.home.common.core.vo.ResultVo;
 import com.home.system.common.vo.AdminVo;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,6 +35,7 @@ public interface AdminClient {
     @RequestMapping(value = SYSTEM_ADMIN_SERVER_PREFIX + "/account", method = RequestMethod.GET)
     ResultVo<AdminVo> findAdminByAccount(@RequestParam(name = "account") String account);
 
+    @Component
     class AdminClientFallback implements AdminClient {
         @Override
         public ResultVo<AdminVo> findAdminByAccount(String account) {
