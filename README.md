@@ -58,7 +58,7 @@ home-platform
  <table>
      <tr>
          <td><img src="https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/9f92fd5340b915bd52f04ba0b0af5d4f50fc7cfe5bef15bec90358a8f0e987175ebf78c46f040d7827a3278c12d4bfba?pictype=scale&from=30113&version=3.3.3.3&uin=190642964&fname=4SZ_H%4035%28%40YP%28OQKJHUPD_Y.jpg&size=750"/></td>
-         <td><img src="https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/9f92fd5340b915bd52f04ba0b0af5d4f50fc7cfe5bef15bec90358a8f0e987175ebf78c46f040d7827a3278c12d4bfba?pictype=scale&from=30113&version=3.3.3.3&uin=190642964&fname=4SZ_H%4035%28%40YP%28OQKJHUPD_Y.jpg&size=750"/></td>
+         <td><img src="https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/725f3c483a4f69bf6f648776b881ed685b9e9b7eff823d43124a24914dc5f4d85b1cdfe2ef7830f5c2875fefe2686674?pictype=scale&from=30113&version=3.3.3.3&uin=190642964&fname=%28TH%24G%29_SV%7DT3G%29PF%298%24W9CU.jpg&size=750"/></td>
      </tr>
      <tr>
           <td><img src="https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/89d71abb973a809d050a2ed9e9de13eedc04d81972288f0bc9d4f179527173b0fd91b6821ca441c935f860ee41ec7c66?pictype=scale&from=30113&version=3.3.3.3&uin=190642964&fname=%5D%24OPZ6%29HXD99%25%7B%6063X%60H%248Q.jpg&size=750"/></td>
