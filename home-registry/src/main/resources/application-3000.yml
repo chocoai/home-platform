@@ -11,7 +11,7 @@ eureka:
     fetch-registry: true
     service-url:
       # defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-      defaultZone: http://${eureka.instance.hostname}:4000/eureka/
+      defaultZone: http://${eureka.instance.hostname}:3000/eureka/
   server:
     #  是否开启注册中心自我保护、开发环境可以关闭、生成环境打开
     enable-self-preservation: true
