@@ -10,8 +10,7 @@ eureka:
     # true 启动 抛出异常 com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
     fetch-registry: true
     service-url:
-      # defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-      defaultZone: http://${eureka.instance.hostname}:3000/eureka/
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
   server:
     #  是否开启注册中心自我保护、开发环境可以关闭、生成环境打开
     enable-self-preservation: true
